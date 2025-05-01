@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { init } from '@anyline/anyline-js';
+import { AnylineJS, State } from '@anyline/anyline-js/types/Anyline-JS/interface/api';
 
 @Component({
   selector: 'app-root',
@@ -9,4 +9,24 @@ import { init } from '@anyline/anyline-js';
 })
 export class AppComponent {
   title = 'anyline-sample';
+  private anyline: AnylineJS | undefined;
+
+  async scanViewClicked(): Promise<void> {
+    if (!this.anyline) {
+      return;
+    }
+
+    switch (this.anyline.getState()) {
+      case State.DISPOSED:
+        break
+      case State.STOPPED:
+        break;
+      case State.PAUSED:
+        break;
+      case State.SCANNING:
+        break;
+      case State.DISPOSED:
+        break;
+    }
+  }
 }
